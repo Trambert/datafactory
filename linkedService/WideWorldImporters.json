@@ -1,0 +1,16 @@
+{
+	"name": "WideWorldImporters",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"connectionString": "integrated security=False;data source=BOR-N-PWIN-6234;initial catalog=WideWorldImporters;user id=sa",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiIwZThkMTkxZS00NzU0LTQyMmQtYjZmMi1hYTZmNjMzZTYxZWIiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "MyintegrationRuntime",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
