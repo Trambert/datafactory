@@ -1,0 +1,24 @@
+{
+	"name": "dataflow1",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"linkedService": {
+						"referenceName": "CDM_ADSL",
+						"type": "LinkedServiceReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"name": "LocallDB"
+				}
+			],
+			"transformations": [],
+			"script": "source(allowSchemaDrift: false,\n\tvalidateSchema: false,\n\tlimit: 100,\n\tignoreNoFilesFound: false,\n\tentity: 'Sales Customers',\n\tformat: 'cdm',\n\tmanifestType: 'model',\n\tfolderPath: 'DatalakeWorkspace/WideWorldImporters',\n\tfileSystem: 'powerbi') ~> source1\nsource1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> LocallDB"
+		}
+	}
+}
