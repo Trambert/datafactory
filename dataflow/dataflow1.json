@@ -14,11 +14,15 @@
 			],
 			"sinks": [
 				{
+					"dataset": {
+						"referenceName": "CustomerFromCDM",
+						"type": "DatasetReference"
+					},
 					"name": "LocallDB"
 				}
 			],
 			"transformations": [],
-			"script": "source(allowSchemaDrift: false,\n\tvalidateSchema: false,\n\tlimit: 100,\n\tignoreNoFilesFound: false,\n\tentity: 'Sales Customers',\n\tformat: 'cdm',\n\tmanifestType: 'model',\n\tfolderPath: 'DatalakeWorkspace/WideWorldImporters',\n\tfileSystem: 'powerbi') ~> source1\nsource1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> LocallDB"
+			"script": "source(output(\n\t\tCustomerID as long,\n\t\tCustomerName as string,\n\t\tBillToCustomerID as long,\n\t\tCustomerCategoryID as long,\n\t\tBuyingGroupID as long,\n\t\tPrimaryContactPersonID as long,\n\t\tAlternateContactPersonID as long,\n\t\tDeliveryMethodID as long,\n\t\tDeliveryCityID as long,\n\t\tPostalCityID as long,\n\t\tCreditLimit as double,\n\t\tAccountOpenedDate as date,\n\t\tStandardDiscountPercentage as double,\n\t\tIsStatementSent as boolean,\n\t\tIsOnCreditHold as boolean,\n\t\tPaymentDays as long,\n\t\tPhoneNumber as string,\n\t\tFaxNumber as string,\n\t\tDeliveryRun as string,\n\t\tRunPosition as string,\n\t\tWebsiteURL as string,\n\t\tDeliveryAddressLine1 as string,\n\t\tDeliveryAddressLine2 as string,\n\t\tDeliveryPostalCode as string,\n\t\tDeliveryLocation as string,\n\t\tPostalAddressLine1 as string,\n\t\tPostalAddressLine2 as string,\n\t\tPostalPostalCode as string,\n\t\tLastEditedBy as long,\n\t\tValidFrom as timestamp,\n\t\tValidTo as timestamp\n\t),\n\tallowSchemaDrift: false,\n\tvalidateSchema: false,\n\tlimit: 100,\n\tignoreNoFilesFound: false,\n\tentity: 'SalesCustomers',\n\tformat: 'cdm',\n\tmanifestType: 'model',\n\tfolderPath: 'DatalakeWorkspace/WideWorldImporters',\n\tfileSystem: 'powerbi') ~> source1\nsource1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:false,\n\tformat: 'table',\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> LocallDB"
 		}
 	}
 }

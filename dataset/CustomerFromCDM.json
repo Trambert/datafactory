@@ -1,0 +1,16 @@
+{
+	"name": "CustomerFromCDM",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "WideWorldImporters",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "CustomerFromCDM"
+		}
+	}
+}
